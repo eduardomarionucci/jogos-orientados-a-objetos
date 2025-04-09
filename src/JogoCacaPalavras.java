@@ -73,7 +73,7 @@ public class JogoCacaPalavras {
             System.out.println("Errou! Tente novamente.");
             System.out.println("Dica: Primeira Letra: " + primeiraLetra);
             System.out.println("Dica: Última Letra: " + ultimaLetra);
-            System.out.print("Qual a palavra: ");
+            System.out.print("DIGITE A PALAVRA ENCONTRADA: ");
             opcao = scanner.nextLine(); // Lê novamente
         }
         System.out.println("ACERTOU!");
