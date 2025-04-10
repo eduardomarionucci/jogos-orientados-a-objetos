@@ -5,16 +5,14 @@ public class JogoCacaPalavras {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Random random = new Random(); // PRIMEIRO Random - Classe - random - objeto - Random() Construtor
+        Random random = new Random();
 
-        String palavras[] = {"agua", "mauro", "frank"}; // VETOR PALAVRAS
+        String palavras[] = {"CARTAO", "HOTEL", "PITEL, MOTEL"};
         int tamanho = 10;
-        char tabuleiro[][] = new char[tamanho][tamanho];  // CRIEI UMA MATRIZ
+        char tabuleiro[][] = new char[tamanho][tamanho];
 
-        // Seleciona uma palavra aleatória
+        /* Selecionar uma palavra aleatória */
         String palavraSelecionada = selecionarPalavra(palavras);
-        // System.out.println("Palavra selecionada: " + palavraSelecionada); // MOSTRAR A PALAVRA
-
 
         preencherTabuleiro(tabuleiro, tamanho);
 
@@ -32,10 +30,10 @@ public class JogoCacaPalavras {
 
 
     private static void preencherTabuleiro(char tabuleiro[][], int tamanho) {
-        Random random = new Random(); // PRIMEIRO Random - Classe - random - objeto - Random() Construtor
-        for (int x = 0; x < tamanho; x++) {        // PADRAO DO LACO DE REPETICAO
-            for (int y = 0; y < tamanho; y++) {       // DOIS LAÇOS - UM PARA A LINHA OUTRO COLUNA POIS E UMA MATRIZ
-                tabuleiro[x][y] = (char) ('a' + random.nextInt(25));     // faz os SORTEIOS PELA TABELA ASCII de 0 ate 25 a partir do 'a'
+        Random random = new Random();
+        for (int x = 0; x < tamanho; x++) {
+            for (int y = 0; y < tamanho; y++) {
+                tabuleiro[x][y] = (char) ('a' + random.nextInt(25));
             }
         }
     }
@@ -53,7 +51,7 @@ public class JogoCacaPalavras {
     private static void imprimirTabuleiro(char tabuleiro[][], int tamanho) {  // cria uma classe privada para melhor organizacao
         for (int x = 0; x < tamanho; x++) {
             for (int y = 0; y < tamanho; y++) {
-                System.out.print(tabuleiro[x][y] + " ");
+                System.out.print(Character.toUpperCase(tabuleiro[x][y]) + " ");
             }
             System.out.println("");
         }
@@ -66,7 +64,6 @@ public class JogoCacaPalavras {
         String opcao = scanner.nextLine();
 
         while (!opcao.equals(palavraSelecionada)) {
-            // Se errar, mostra a dica
             char primeiraLetra = palavraSelecionada.charAt(0);
             char ultimaLetra = palavraSelecionada.charAt(palavraSelecionada.length() - 1);
 
@@ -74,7 +71,7 @@ public class JogoCacaPalavras {
             System.out.println("Dica: Primeira Letra: " + primeiraLetra);
             System.out.println("Dica: Última Letra: " + ultimaLetra);
             System.out.print("DIGITE A PALAVRA ENCONTRADA: ");
-            opcao = scanner.nextLine(); // Lê novamente
+            opcao = scanner.nextLine();
         }
         System.out.println("ACERTOU!");
     }
