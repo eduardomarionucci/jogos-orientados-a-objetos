@@ -2,12 +2,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class JogoDescoberta {
-    private final String[] palavras = {"BRASIL", "RUSSIA", "INGLATERRA", "ISRAEL", "MEXICO"};
-    private final Scanner scanner = new Scanner(System.in);
+    public String[] palavras = {"BRASIL", "RUSSIA", "INGLATERRA", "ISRAEL", "MEXICO"};
+    public Scanner scanner = new Scanner(System.in);
+
+    public JogoDescoberta() {
+        iniciarJogo();
+    }
 
     public void iniciarJogo() {
-        String palavra = palavras[new Random().nextInt(palavras.length)];
-        String embaralhada = embaralhar(palavra);
+        Palavra palavra = new Palavra();
+        String embaralhada = embaralhar(palavra.palavraEscolhida);
 
         System.out.println("Palavra embaralhada: " + embaralhada);
         System.out.println("Tente adivinhar a palavra ou digite 'dica' para obter uma dica ou 'sair' para desistir.");
@@ -19,11 +23,11 @@ public class JogoDescoberta {
             tentativa = scanner.nextLine().trim().toUpperCase();
 
             if (tentativa.equals("DICA")) {
-                System.out.println("PRIMEIRA LETRA: '" + palavra.charAt(0) + "', ULTIMA LETRA: '" + palavra.charAt(palavra.length() - 1) + "'");
+                System.out.println("PRIMEIRA LETRA: '" + palavra.palavraEscolhida.charAt(0) + "', ULTIMA LETRA: '" + palavra.palavraEscolhida.charAt(palavra.palavraEscolhida.length() - 1) + "'");
             } else if (tentativa.equals("SAIR")) {
-                System.out.println("A palavra era: " + palavra);
+                System.out.println("A palavra era: " + palavra.palavraEscolhida);
                 break;
-            } else if (tentativa.equals(palavra)) {
+            } else if (tentativa.equals(palavra.palavraEscolhida)) {
                 System.out.println("Parabéns!");
                 break;
             } else {

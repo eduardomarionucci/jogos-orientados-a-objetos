@@ -11,14 +11,12 @@ public class Main {
             System.out.println("2. Jogo da Descoberta");
             System.out.print("Opção: ");
             int opcao = scanner.nextInt();
-            scanner.nextLine(); // limpa o buffer
+            scanner.nextLine();
 
             if (opcao == 1) {
                 JogoCacaPalavras jogoCacaPalavras = new JogoCacaPalavras();
-                jogoCacaPalavras.iniciarJogo();
             } else if (opcao == 2) {
                 JogoDescoberta jogoDescoberta = new JogoDescoberta();
-                jogoDescoberta.iniciarJogo();
             } else {
                 System.out.println("Opção inválida.");
             }

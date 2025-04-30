@@ -2,15 +2,20 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class JogoCacaPalavras {
-    private final String[] palavras = {"JAVA", "MOTEL", "CARTAO"};
-    private final int tamanho = 10;
-    private final char[][] tabuleiro = new char[tamanho][tamanho];
-    private final Scanner scanner = new Scanner(System.in);
+
+    public int tamanho = 10;
+    public char[][] tabuleiro = new char[tamanho][tamanho];
+    public Scanner scanner = new Scanner(System.in);
+
+    public JogoCacaPalavras() {
+        iniciarJogo();
+    }
 
     public void iniciarJogo() {
-        String palavra = palavras[new Random().nextInt(palavras.length)];
+        Palavra palavra = new Palavra();
+
         preencherTabuleiro();
-        colocarPalavra(palavra);
+        colocarPalavra(palavra.palavraEscolhida);
         imprimirTabuleiro();
 
         String tentativa;
@@ -18,10 +23,10 @@ public class JogoCacaPalavras {
             System.out.print("Digite a palavra encontrada: ");
             tentativa = scanner.nextLine().toUpperCase();
 
-            if (!tentativa.equals(palavra)) {
-                System.out.println("Dica: começa com '" + palavra.charAt(0) + "' e termina com '" + palavra.charAt(palavra.length() - 1) + "'");
+            if (!tentativa.equals(palavra.palavraEscolhida)) {
+                System.out.println("Dica: começa com '" + palavra.palavraEscolhida.charAt(0) + "' e termina com '" + palavra.palavraEscolhida.charAt(palavra.palavraEscolhida.length() - 1) + "'");
             }
-        } while (!tentativa.equals(palavra));
+        } while (!tentativa.equals(palavra.palavraEscolhida));
 
         System.out.println("ACERTOU!");
     }
