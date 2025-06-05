@@ -1,9 +1,10 @@
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class JogoDescoberta {
-    public String[] palavras = {"BRASIL", "RUSSIA", "INGLATERRA", "ISRAEL", "MEXICO"};
     public Scanner scanner = new Scanner(System.in);
+    public Ansi ansi = new Ansi();
 
     public JogoDescoberta() {
         iniciarJogo();
@@ -11,9 +12,9 @@ public class JogoDescoberta {
 
     public void iniciarJogo() {
         Palavra palavra = new Palavra();
-        String embaralhada = embaralhar(palavra.palavraEscolhida);
+        String embaralhada = palavra.embaralharPalavra(palavra.palavraEscolhida);
 
-        System.out.println("Palavra embaralhada: " + embaralhada);
+        System.out.println("Palavra embaralhada: " + Ansi.ANSI_CODES[(new Random().nextInt(Ansi.ANSI_CODES.length))] +  embaralhada + Ansi.ANSI_RESET);
         System.out.println("Tente adivinhar a palavra ou digite 'dica' para obter uma dica ou 'sair' para desistir.");
 
         String tentativa;
@@ -36,17 +37,5 @@ public class JogoDescoberta {
         }
     }
 
-    private String embaralhar(String palavra) {
-        char[] letras = palavra.toCharArray();
-        Random random = new Random();
 
-        for (int i = 0; i < letras.length; i++) {
-            int j = random.nextInt(letras.length);
-            char temp = letras[i];
-            letras[i] = letras[j];
-            letras[j] = temp;
-        }
-
-        return new String(letras);
-    }
 }

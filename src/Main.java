@@ -14,9 +14,9 @@ public class Main {
             scanner.nextLine();
 
             if (opcao == 1) {
-                JogoCacaPalavras jogoCacaPalavras = new JogoCacaPalavras();
+                new JogoCacaPalavras();
             } else if (opcao == 2) {
-                JogoDescoberta jogoDescoberta = new JogoDescoberta();
+                new JogoDescoberta();
             } else {
                 System.out.println("Opção inválida.");
             }

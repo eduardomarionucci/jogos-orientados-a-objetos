@@ -1,12 +1,13 @@
 import java.util.Random;
 
 public class Palavra {
-    public final String[] palavras = {"BRASIL", "RUSSIA", "INGLATERRA", "ISRAEL", "MEXICO","JAVA", "VENEZUELA", "SURINAME"};
-    public String palavraEscolhida = palavras[(new Random().nextInt(palavras.length))];
+    public final String[] palavras = {"BRASIL", "RUSSIA", "INGLATERRA", "ISRAEL", "MEXICO", "JAVA", "VENEZUELA", "SURINAME"};
+    public String palavraEscolhida;
 
     public Palavra() {
-        // Construtor padrão
+        this.palavraEscolhida = this.escolherPalavras();
     }
+
 
     public String embaralharPalavra(String palavra) {
         char[] letras = palavra.toCharArray();
@@ -20,5 +21,17 @@ public class Palavra {
         }
 
         return new String(letras);
+    }
+
+    private String escolherPalavras() {
+        new Random().nextInt(palavras.length);
+        boolean contains = false;
+        for (int i = 0; i < palavras.length; i++) {
+            if (!contains) {
+                this.palavraEscolhida = palavras[(new Random().nextInt(palavras.length))];
+            }
+        }
+
+        return palavraEscolhida;
     }
 }
